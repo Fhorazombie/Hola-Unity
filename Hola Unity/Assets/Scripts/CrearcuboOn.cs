@@ -47,8 +47,6 @@ public class CrearcuboOn : MonoBehaviour
         var boxCollider = objToSpawn.GetComponent<BoxCollider>();
         boxCollider.center = new Vector3(0.5f, 0.5f, 0.5f);
         objToSpawn.AddComponent<MeshRenderer>();
-        Color c = new Color(Random.value, Random.value, Random.value);
-        objToSpawn.GetComponent<MeshRenderer>().material.color = c;
         objToSpawn.transform.position = Random.insideUnitSphere;
     }
     // Start is called before the first frame update
@@ -66,10 +64,16 @@ public class CrearcuboOn : MonoBehaviour
     private void OnEnable()
     {
         GenerarCubo();
+        GameObject tempGameObject = Instantiate<GameObject>(objToSpawn);
+        Color c = new Color(Random.value, Random.value, Random.value);
+        tempGameObject.GetComponent<MeshRenderer>().material.color = c;
     }
 
     private void OnDisable()
     {
         GenerarCubo();
+        GameObject tempGameObject = Instantiate<GameObject>(objToSpawn);
+        Color c = new Color(Random.value, Random.value, Random.value);
+        tempGameObject.GetComponent<MeshRenderer>().material.color = c;
     }
 }
